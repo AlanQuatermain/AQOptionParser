@@ -1,0 +1,468 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		385FFB9E156D461000F3D09E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 385FFB9D156D461000F3D09E /* Cocoa.framework */; };
+		385FFBA8156D461000F3D09E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 385FFBA6156D461000F3D09E /* InfoPlist.strings */; };
+		385FFBAC156D461000F3D09E /* AQOptionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 385FFBAB156D461000F3D09E /* AQOptionParser.m */; };
+		385FFBB4156D461000F3D09E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 385FFBB3156D461000F3D09E /* SenTestingKit.framework */; };
+		385FFBB5156D461000F3D09E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 385FFB9D156D461000F3D09E /* Cocoa.framework */; };
+		385FFBB8156D461000F3D09E /* AQOptionParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 385FFB9A156D461000F3D09E /* AQOptionParser.framework */; };
+		385FFBBE156D461000F3D09E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 385FFBBC156D461000F3D09E /* InfoPlist.strings */; };
+		385FFBC1156D461000F3D09E /* AQOptionParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 385FFBC0156D461000F3D09E /* AQOptionParserTests.m */; };
+		385FFBCC156D46A000F3D09E /* AQOption.h in Headers */ = {isa = PBXBuildFile; fileRef = 385FFBCA156D46A000F3D09E /* AQOption.h */; };
+		385FFBCD156D46A000F3D09E /* AQOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 385FFBCB156D46A000F3D09E /* AQOption.m */; };
+		385FFBCE156D46A000F3D09E /* AQOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 385FFBCB156D46A000F3D09E /* AQOption.m */; };
+		385FFBD0156D4D1900F3D09E /* AQOption_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 385FFBCF156D4D1800F3D09E /* AQOption_Internal.h */; };
+		385FFBD3156D7AAA00F3D09E /* AQOptionRequirementGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 385FFBD1156D7AAA00F3D09E /* AQOptionRequirementGroup.h */; };
+		385FFBD4156D7AAA00F3D09E /* AQOptionRequirementGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 385FFBD2156D7AAA00F3D09E /* AQOptionRequirementGroup.m */; };
+		385FFBD5156D7AAA00F3D09E /* AQOptionRequirementGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 385FFBD2156D7AAA00F3D09E /* AQOptionRequirementGroup.m */; };
+		385FFBD71571583000F3D09E /* AQOptionRequirementGroup_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 385FFBD61571583000F3D09E /* AQOptionRequirementGroup_Internal.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		385FFBB6156D461000F3D09E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 385FFB90156D461000F3D09E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 385FFB99156D461000F3D09E;
+			remoteInfo = AQOptionParser;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		385FFB9A156D461000F3D09E /* AQOptionParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AQOptionParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		385FFB9D156D461000F3D09E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		385FFBA0156D461000F3D09E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		385FFBA1156D461000F3D09E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		385FFBA2156D461000F3D09E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		385FFBA5156D461000F3D09E /* AQOptionParser-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AQOptionParser-Info.plist"; sourceTree = "<group>"; };
+		385FFBA7156D461000F3D09E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		385FFBA9156D461000F3D09E /* AQOptionParser-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AQOptionParser-Prefix.pch"; sourceTree = "<group>"; };
+		385FFBAA156D461000F3D09E /* AQOptionParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AQOptionParser.h; sourceTree = "<group>"; };
+		385FFBAB156D461000F3D09E /* AQOptionParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AQOptionParser.m; sourceTree = "<group>"; };
+		385FFBB2156D461000F3D09E /* AQOptionParserTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AQOptionParserTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		385FFBB3156D461000F3D09E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		385FFBBB156D461000F3D09E /* AQOptionParserTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AQOptionParserTests-Info.plist"; sourceTree = "<group>"; };
+		385FFBBD156D461000F3D09E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		385FFBBF156D461000F3D09E /* AQOptionParserTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AQOptionParserTests.h; sourceTree = "<group>"; };
+		385FFBC0156D461000F3D09E /* AQOptionParserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AQOptionParserTests.m; sourceTree = "<group>"; };
+		385FFBCA156D46A000F3D09E /* AQOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQOption.h; sourceTree = "<group>"; };
+		385FFBCB156D46A000F3D09E /* AQOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQOption.m; sourceTree = "<group>"; };
+		385FFBCF156D4D1800F3D09E /* AQOption_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQOption_Internal.h; sourceTree = "<group>"; };
+		385FFBD1156D7AAA00F3D09E /* AQOptionRequirementGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQOptionRequirementGroup.h; sourceTree = "<group>"; };
+		385FFBD2156D7AAA00F3D09E /* AQOptionRequirementGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQOptionRequirementGroup.m; sourceTree = "<group>"; };
+		385FFBD61571583000F3D09E /* AQOptionRequirementGroup_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQOptionRequirementGroup_Internal.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		385FFB96156D461000F3D09E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				385FFB9E156D461000F3D09E /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		385FFBAE156D461000F3D09E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				385FFBB4156D461000F3D09E /* SenTestingKit.framework in Frameworks */,
+				385FFBB5156D461000F3D09E /* Cocoa.framework in Frameworks */,
+				385FFBB8156D461000F3D09E /* AQOptionParser.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		385FFB8E156D461000F3D09E = {
+			isa = PBXGroup;
+			children = (
+				385FFBA3156D461000F3D09E /* AQOptionParser */,
+				385FFBB9156D461000F3D09E /* AQOptionParserTests */,
+				385FFB9C156D461000F3D09E /* Frameworks */,
+				385FFB9B156D461000F3D09E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		385FFB9B156D461000F3D09E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				385FFB9A156D461000F3D09E /* AQOptionParser.framework */,
+				385FFBB2156D461000F3D09E /* AQOptionParserTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		385FFB9C156D461000F3D09E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				385FFB9D156D461000F3D09E /* Cocoa.framework */,
+				385FFBB3156D461000F3D09E /* SenTestingKit.framework */,
+				385FFB9F156D461000F3D09E /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		385FFB9F156D461000F3D09E /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				385FFBA0156D461000F3D09E /* AppKit.framework */,
+				385FFBA1156D461000F3D09E /* CoreData.framework */,
+				385FFBA2156D461000F3D09E /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		385FFBA3156D461000F3D09E /* AQOptionParser */ = {
+			isa = PBXGroup;
+			children = (
+				385FFBAA156D461000F3D09E /* AQOptionParser.h */,
+				385FFBAB156D461000F3D09E /* AQOptionParser.m */,
+				385FFBCA156D46A000F3D09E /* AQOption.h */,
+				385FFBCF156D4D1800F3D09E /* AQOption_Internal.h */,
+				385FFBCB156D46A000F3D09E /* AQOption.m */,
+				385FFBD1156D7AAA00F3D09E /* AQOptionRequirementGroup.h */,
+				385FFBD61571583000F3D09E /* AQOptionRequirementGroup_Internal.h */,
+				385FFBD2156D7AAA00F3D09E /* AQOptionRequirementGroup.m */,
+				385FFBA4156D461000F3D09E /* Supporting Files */,
+			);
+			path = AQOptionParser;
+			sourceTree = "<group>";
+		};
+		385FFBA4156D461000F3D09E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				385FFBA5156D461000F3D09E /* AQOptionParser-Info.plist */,
+				385FFBA6156D461000F3D09E /* InfoPlist.strings */,
+				385FFBA9156D461000F3D09E /* AQOptionParser-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		385FFBB9156D461000F3D09E /* AQOptionParserTests */ = {
+			isa = PBXGroup;
+			children = (
+				385FFBBF156D461000F3D09E /* AQOptionParserTests.h */,
+				385FFBC0156D461000F3D09E /* AQOptionParserTests.m */,
+				385FFBBA156D461000F3D09E /* Supporting Files */,
+			);
+			path = AQOptionParserTests;
+			sourceTree = "<group>";
+		};
+		385FFBBA156D461000F3D09E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				385FFBBB156D461000F3D09E /* AQOptionParserTests-Info.plist */,
+				385FFBBC156D461000F3D09E /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		385FFB97156D461000F3D09E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				385FFBCC156D46A000F3D09E /* AQOption.h in Headers */,
+				385FFBD0156D4D1900F3D09E /* AQOption_Internal.h in Headers */,
+				385FFBD3156D7AAA00F3D09E /* AQOptionRequirementGroup.h in Headers */,
+				385FFBD71571583000F3D09E /* AQOptionRequirementGroup_Internal.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		385FFB99156D461000F3D09E /* AQOptionParser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 385FFBC4156D461000F3D09E /* Build configuration list for PBXNativeTarget "AQOptionParser" */;
+			buildPhases = (
+				385FFB95156D461000F3D09E /* Sources */,
+				385FFB96156D461000F3D09E /* Frameworks */,
+				385FFB97156D461000F3D09E /* Headers */,
+				385FFB98156D461000F3D09E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AQOptionParser;
+			productName = AQOptionParser;
+			productReference = 385FFB9A156D461000F3D09E /* AQOptionParser.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		385FFBB1156D461000F3D09E /* AQOptionParserTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 385FFBC7156D461000F3D09E /* Build configuration list for PBXNativeTarget "AQOptionParserTests" */;
+			buildPhases = (
+				385FFBAD156D461000F3D09E /* Sources */,
+				385FFBAE156D461000F3D09E /* Frameworks */,
+				385FFBAF156D461000F3D09E /* Resources */,
+				385FFBB0156D461000F3D09E /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				385FFBB7156D461000F3D09E /* PBXTargetDependency */,
+			);
+			name = AQOptionParserTests;
+			productName = AQOptionParserTests;
+			productReference = 385FFBB2156D461000F3D09E /* AQOptionParserTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		385FFB90156D461000F3D09E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Jim Dovey";
+			};
+			buildConfigurationList = 385FFB93156D461000F3D09E /* Build configuration list for PBXProject "AQOptionParser" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 385FFB8E156D461000F3D09E;
+			productRefGroup = 385FFB9B156D461000F3D09E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				385FFB99156D461000F3D09E /* AQOptionParser */,
+				385FFBB1156D461000F3D09E /* AQOptionParserTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		385FFB98156D461000F3D09E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				385FFBA8156D461000F3D09E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		385FFBAF156D461000F3D09E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				385FFBBE156D461000F3D09E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		385FFBB0156D461000F3D09E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		385FFB95156D461000F3D09E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				385FFBAC156D461000F3D09E /* AQOptionParser.m in Sources */,
+				385FFBCD156D46A000F3D09E /* AQOption.m in Sources */,
+				385FFBD4156D7AAA00F3D09E /* AQOptionRequirementGroup.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		385FFBAD156D461000F3D09E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				385FFBC1156D461000F3D09E /* AQOptionParserTests.m in Sources */,
+				385FFBCE156D46A000F3D09E /* AQOption.m in Sources */,
+				385FFBD5156D7AAA00F3D09E /* AQOptionRequirementGroup.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		385FFBB7156D461000F3D09E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 385FFB99156D461000F3D09E /* AQOptionParser */;
+			targetProxy = 385FFBB6156D461000F3D09E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		385FFBA6156D461000F3D09E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				385FFBA7156D461000F3D09E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		385FFBBC156D461000F3D09E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				385FFBBD156D461000F3D09E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		385FFBC2156D461000F3D09E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		385FFBC3156D461000F3D09E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		385FFBC5156D461000F3D09E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AQOptionParser/AQOptionParser-Prefix.pch";
+				INFOPLIST_FILE = "AQOptionParser/AQOptionParser-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		385FFBC6156D461000F3D09E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AQOptionParser/AQOptionParser-Prefix.pch";
+				INFOPLIST_FILE = "AQOptionParser/AQOptionParser-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		385FFBC8156D461000F3D09E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AQOptionParser/AQOptionParser-Prefix.pch";
+				INFOPLIST_FILE = "AQOptionParserTests/AQOptionParserTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		385FFBC9156D461000F3D09E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AQOptionParser/AQOptionParser-Prefix.pch";
+				INFOPLIST_FILE = "AQOptionParserTests/AQOptionParserTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		385FFB93156D461000F3D09E /* Build configuration list for PBXProject "AQOptionParser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				385FFBC2156D461000F3D09E /* Debug */,
+				385FFBC3156D461000F3D09E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		385FFBC4156D461000F3D09E /* Build configuration list for PBXNativeTarget "AQOptionParser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				385FFBC5156D461000F3D09E /* Debug */,
+				385FFBC6156D461000F3D09E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		385FFBC7156D461000F3D09E /* Build configuration list for PBXNativeTarget "AQOptionParserTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				385FFBC8156D461000F3D09E /* Debug */,
+				385FFBC9156D461000F3D09E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 385FFB90156D461000F3D09E /* Project object */;
+}
