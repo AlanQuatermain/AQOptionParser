@@ -169,9 +169,9 @@ NSString * const AQOptionUsageLocalizedDescription = @"AQOptionUsageLocalizedDes
         NSUInteger breakAt = (NSUInteger)CFStringGetHyphenationLocationBeforeIndex((__bridge CFStringRef)base, breakPoint, CFRangeMake(substringRange.location, substringRange.length), 0, (__bridge CFLocaleRef)locale, &hyphen);
         if ( breakAt != kCFNotFound )
         {
-            NSString * hyphenStr = CFBridgingRelease(CFStringCreateWithBytesNoCopy(kCFAllocatorDefault, (UInt8 *)&hyphen, sizeof(UTF32Char), kCFStringEncodingUTF32, FALSE, kCFAllocatorNull));
+            NSString * hyphenStr = CFBridgingRelease(CFStringCreateWithBytesNoCopy(kCFAllocatorDefault, (UInt8 *)&hyphen, sizeof(UTF32Char), kCFStringEncodingUTF32LE, FALSE, kCFAllocatorNull));
             
-            // we have out hyphenation point, gentlemen
+            // we have our hyphenation point, gentlemen
             NSRange r = NSMakeRange(enclosingRange.location, breakAt-enclosingRange.location);
             [str appendString: [base substringWithRange: r]];
             [str appendFormat: @"%@\n%@", hyphenStr, indentStr];
@@ -182,13 +182,13 @@ NSString * const AQOptionUsageLocalizedDescription = @"AQOptionUsageLocalizedDes
             [str appendString: [base substringWithRange: r]];
             
             breakPoint += (column-indent-r.length);
+            return;
         }
         
         // otherwise we couldn't hyphenate, so break before the entire word
         [str appendFormat: @"\n%@", indentStr];
         breakPoint += (column-indent-enclosingRange.length);
         [str appendString: [base substringWithRange: enclosingRange]];
-        return;
     }];
 }
 
@@ -285,7 +285,7 @@ NSString * const AQOptionUsageLocalizedDescription = @"AQOptionUsageLocalizedDes
 {
     // generate the description string
     NSString * descBase = [_usageInformation objectForKey: AQOptionUsageLocalizedDescription];
-    if ( descBase != nil )
+    if ( descBase == nil )
         descBase = (_optional ? @"Optional." : @"Required.");
     else if ( [descBase hasSuffix: @"."] == NO )
         descBase = [descBase stringByAppendingString: @"."];

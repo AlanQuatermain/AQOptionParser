@@ -7,21 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3856976F1572B55A00F8636A /* AQOptionParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 385FFB9A156D461000F3D09E /* AQOptionParser.framework */; };
+		385697701572B5A400F8636A /* AQOptionParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 385FFBAA156D461000F3D09E /* AQOptionParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		385FFB9E156D461000F3D09E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 385FFB9D156D461000F3D09E /* Cocoa.framework */; };
 		385FFBA8156D461000F3D09E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 385FFBA6156D461000F3D09E /* InfoPlist.strings */; };
 		385FFBAC156D461000F3D09E /* AQOptionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 385FFBAB156D461000F3D09E /* AQOptionParser.m */; };
 		385FFBB4156D461000F3D09E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 385FFBB3156D461000F3D09E /* SenTestingKit.framework */; };
 		385FFBB5156D461000F3D09E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 385FFB9D156D461000F3D09E /* Cocoa.framework */; };
-		385FFBB8156D461000F3D09E /* AQOptionParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 385FFB9A156D461000F3D09E /* AQOptionParser.framework */; };
 		385FFBBE156D461000F3D09E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 385FFBBC156D461000F3D09E /* InfoPlist.strings */; };
 		385FFBC1156D461000F3D09E /* AQOptionParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 385FFBC0156D461000F3D09E /* AQOptionParserTests.m */; };
-		385FFBCC156D46A000F3D09E /* AQOption.h in Headers */ = {isa = PBXBuildFile; fileRef = 385FFBCA156D46A000F3D09E /* AQOption.h */; };
+		385FFBCC156D46A000F3D09E /* AQOption.h in Headers */ = {isa = PBXBuildFile; fileRef = 385FFBCA156D46A000F3D09E /* AQOption.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		385FFBCD156D46A000F3D09E /* AQOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 385FFBCB156D46A000F3D09E /* AQOption.m */; };
-		385FFBCE156D46A000F3D09E /* AQOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 385FFBCB156D46A000F3D09E /* AQOption.m */; };
 		385FFBD0156D4D1900F3D09E /* AQOption_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 385FFBCF156D4D1800F3D09E /* AQOption_Internal.h */; };
-		385FFBD3156D7AAA00F3D09E /* AQOptionRequirementGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 385FFBD1156D7AAA00F3D09E /* AQOptionRequirementGroup.h */; };
+		385FFBD3156D7AAA00F3D09E /* AQOptionRequirementGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 385FFBD1156D7AAA00F3D09E /* AQOptionRequirementGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		385FFBD4156D7AAA00F3D09E /* AQOptionRequirementGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 385FFBD2156D7AAA00F3D09E /* AQOptionRequirementGroup.m */; };
-		385FFBD5156D7AAA00F3D09E /* AQOptionRequirementGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 385FFBD2156D7AAA00F3D09E /* AQOptionRequirementGroup.m */; };
 		385FFBD71571583000F3D09E /* AQOptionRequirementGroup_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 385FFBD61571583000F3D09E /* AQOptionRequirementGroup_Internal.h */; };
 /* End PBXBuildFile section */
 
@@ -73,9 +72,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3856976F1572B55A00F8636A /* AQOptionParser.framework in Frameworks */,
 				385FFBB4156D461000F3D09E /* SenTestingKit.framework in Frameworks */,
 				385FFBB5156D461000F3D09E /* Cocoa.framework in Frameworks */,
-				385FFBB8156D461000F3D09E /* AQOptionParser.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,9 +172,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				385697701572B5A400F8636A /* AQOptionParser.h in Headers */,
 				385FFBCC156D46A000F3D09E /* AQOption.h in Headers */,
-				385FFBD0156D4D1900F3D09E /* AQOption_Internal.h in Headers */,
 				385FFBD3156D7AAA00F3D09E /* AQOptionRequirementGroup.h in Headers */,
+				385FFBD0156D4D1900F3D09E /* AQOption_Internal.h in Headers */,
 				385FFBD71571583000F3D09E /* AQOptionRequirementGroup_Internal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,8 +298,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				385FFBC1156D461000F3D09E /* AQOptionParserTests.m in Sources */,
-				385FFBCE156D46A000F3D09E /* AQOption.m in Sources */,
-				385FFBD5156D7AAA00F3D09E /* AQOptionRequirementGroup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +451,7 @@
 				385FFBC6156D461000F3D09E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		385FFBC7156D461000F3D09E /* Build configuration list for PBXNativeTarget "AQOptionParserTests" */ = {
 			isa = XCConfigurationList;
@@ -461,6 +460,7 @@
 				385FFBC9156D461000F3D09E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

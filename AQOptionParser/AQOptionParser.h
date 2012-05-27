@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@class AQOption, AQOptionRequirementGroup;
+#import "AQOption.h"
+#import "AQOptionRequirementGroup.h"
 
 /// The NSError domain for the option handling API.
 extern NSString * const AQOptionErrorDomain;
