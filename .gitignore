@@ -1,3 +1,5 @@
 build
 AQOptionParser.xcodeproj/xcuserdata
 AQOptionParser.xcodeproj/project.xcworkspace/xcuserdata
+Templates
+build-docset.sh
