@@ -28,6 +28,7 @@ NSString * const AQOptionErrorDomain = @"AQOptionErrorDomain";
     
     _options = [NSMutableOrderedSet new];
     _optionGroups = [NSMutableOrderedSet new];
+    _allOptions = [NSMutableSet new];
     
     return ( self );
 }
