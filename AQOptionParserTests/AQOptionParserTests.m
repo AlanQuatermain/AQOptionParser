@@ -29,9 +29,9 @@
     char * argv[] = { "testerApp", "-t", "value", NULL };
     
     NSError * error = nil;
-    STAssertTrue([parser parseCommandLineArguments: argv count: argc nextArgumentIndex: NULL error: &error], @"Expected parser to succeed");
-    STAssertTrue(option.matched, @"Expected option to match with short option specified");
-    STAssertEqualObjects(option.parameter, @"value", @"Expected matched value to be 'value', but got %@", option.parameter);
+    XCTAssertTrue([parser parseCommandLineArguments: argv count: argc nextArgumentIndex: NULL error: &error], @"Expected parser to succeed");
+    XCTAssertTrue(option.matched, @"Expected option to match with short option specified");
+    XCTAssertEqualObjects(option.parameter, @"value", @"Expected matched value to be 'value', but got %@", option.parameter);
 }
 
 - (void) testShortOptionNonSpacedMatching
@@ -44,9 +44,9 @@
     char * argv[] = { "testerApp", "-tvalue", NULL };
     
     NSError * error = nil;
-    STAssertTrue([parser parseCommandLineArguments: argv count: argc nextArgumentIndex: NULL error: &error], @"Expected parser to succeed");
-    STAssertTrue(option.matched, @"Expected option to match with short option specified");
-    STAssertEqualObjects(option.parameter, @"value", @"Expected matched value to be 'value', but got %@", option.parameter);
+    XCTAssertTrue([parser parseCommandLineArguments: argv count: argc nextArgumentIndex: NULL error: &error], @"Expected parser to succeed");
+    XCTAssertTrue(option.matched, @"Expected option to match with short option specified");
+    XCTAssertEqualObjects(option.parameter, @"value", @"Expected matched value to be 'value', but got %@", option.parameter);
 }
 
 - (void) testLongOptionEqualsMatching
@@ -58,9 +58,9 @@
     int argc = 2;
     char * argv[] = { "testerApp", "--test-attr=the value", NULL };
     NSError * error = nil;
-    STAssertTrue([parser parseCommandLineArguments: argv count: argc nextArgumentIndex: NULL error: &error], @"Expected parser to succeed");
-    STAssertTrue(option.matched, @"Expected option to match with long option specified");
-    STAssertEqualObjects(option.parameter, @"the value", @"Expected matched value to be 'the value', but got %@", option.parameter);
+    XCTAssertTrue([parser parseCommandLineArguments: argv count: argc nextArgumentIndex: NULL error: &error], @"Expected parser to succeed");
+    XCTAssertTrue(option.matched, @"Expected option to match with long option specified");
+    XCTAssertEqualObjects(option.parameter, @"the value", @"Expected matched value to be 'the value', but got %@", option.parameter);
 }
 
 - (void) testLongOptionSpacedMatching
@@ -72,9 +72,9 @@
     int argc = 3;
     char * argv[] = { "testerApp", "--test-attr", "the value", NULL };
     NSError * error = nil;
-    STAssertTrue([parser parseCommandLineArguments: argv count: argc nextArgumentIndex: NULL error: &error], @"Expected parser to succeed");
-    STAssertTrue(option.matched, @"Expected option to match with long option specified");
-    STAssertEqualObjects(option.parameter, @"the value", @"Expected matched value to be 'the value', but got %@", option.parameter);
+    XCTAssertTrue([parser parseCommandLineArguments: argv count: argc nextArgumentIndex: NULL error: &error], @"Expected parser to succeed");
+    XCTAssertTrue(option.matched, @"Expected option to match with long option specified");
+    XCTAssertEqualObjects(option.parameter, @"the value", @"Expected matched value to be 'the value', but got %@", option.parameter);
 }
 
 - (void) testSingleOptionLocalizedDescription
@@ -90,8 +90,8 @@
     NSString * expectedPlain = @"  --test-attr={test} | t {test}:\n    A very nice option with which to test this library.\n";
     NSString * expectedWrapped = @"  --test-attr={test} | t {test}:\n    A very nice option with which to \n    test this library.\n";
     
-    STAssertEqualObjects(usageInfo, expectedPlain, @"Expected '%@' but got '%@'", expectedPlain, usageInfo);
-    STAssertEqualObjects(wrappedUsageInfo, expectedWrapped, @"Expected '%@' but got '%@'", expectedWrapped, wrappedUsageInfo);
+    XCTAssertEqualObjects(usageInfo, expectedPlain, @"Expected '%@' but got '%@'", expectedPlain, usageInfo);
+    XCTAssertEqualObjects(wrappedUsageInfo, expectedWrapped, @"Expected '%@' but got '%@'", expectedWrapped, wrappedUsageInfo);
 }
 
 - (void) testHyphenationOfLocalizedDescription
@@ -103,7 +103,7 @@
     
     NSString * usage = [parser localizedUsageInformationWithColumnWidth: 40];
     NSString * expected = @"  --test-attr={test} | t {test}:\n    A localized descriptive dedication\n    of eloquently assembled linguis-\n    tics in sequence.\n";
-    STAssertEqualObjects(usage, expected, @"Expected '%@' but got '%@'", expected, usage);
+    XCTAssertEqualObjects(usage, expected, @"Expected '%@' but got '%@'", expected, usage);
 }
 
 @end
