@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 Jim Dovey. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface AQOptionParserTests : SenTestCase
+@interface AQOptionParserTests : XCTestCase
 
 @end

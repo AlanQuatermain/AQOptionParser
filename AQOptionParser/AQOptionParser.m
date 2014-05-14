@@ -100,7 +100,7 @@ NSString * const AQOptionErrorDomain = @"AQOptionErrorDomain";
     for ( AQOption * option in _allOptions )
     {
         [option setGetoptParameters: &options[i++]];
-        NSMapInsert(lookup, (const void *)option.shortName, (__bridge void *)option);
+        NSMapInsert(lookup, (const void *)(intptr_t)option.shortName, (__bridge void *)option);
         shortOptions[c++] = (char)option.shortName;
         if ( option.optional == NO )
             shortOptions[c++] = ':';
@@ -112,7 +112,7 @@ NSString * const AQOptionErrorDomain = @"AQOptionErrorDomain";
     // parse and handle
     @try
     {
-        int ch = 0;
+        intptr_t ch = 0;
         while ( (ch = getopt_long(argc, argv, shortOptions, options, NULL)) != -1 )
         {
             switch ( ch )

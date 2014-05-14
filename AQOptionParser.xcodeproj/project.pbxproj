@@ -12,7 +12,6 @@
 		385FFB9E156D461000F3D09E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 385FFB9D156D461000F3D09E /* Cocoa.framework */; };
 		385FFBA8156D461000F3D09E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 385FFBA6156D461000F3D09E /* InfoPlist.strings */; };
 		385FFBAC156D461000F3D09E /* AQOptionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 385FFBAB156D461000F3D09E /* AQOptionParser.m */; };
-		385FFBB4156D461000F3D09E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 385FFBB3156D461000F3D09E /* SenTestingKit.framework */; };
 		385FFBB5156D461000F3D09E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 385FFB9D156D461000F3D09E /* Cocoa.framework */; };
 		385FFBBE156D461000F3D09E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 385FFBBC156D461000F3D09E /* InfoPlist.strings */; };
 		385FFBC1156D461000F3D09E /* AQOptionParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 385FFBC0156D461000F3D09E /* AQOptionParserTests.m */; };
@@ -22,6 +21,7 @@
 		385FFBD3156D7AAA00F3D09E /* AQOptionRequirementGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 385FFBD1156D7AAA00F3D09E /* AQOptionRequirementGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		385FFBD4156D7AAA00F3D09E /* AQOptionRequirementGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 385FFBD2156D7AAA00F3D09E /* AQOptionRequirementGroup.m */; };
 		385FFBD71571583000F3D09E /* AQOptionRequirementGroup_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 385FFBD61571583000F3D09E /* AQOptionRequirementGroup_Internal.h */; };
+		3DCA310A1923E60100DB08E9 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DCA31091923E60000DB08E9 /* XCTest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +45,7 @@
 		385FFBA9156D461000F3D09E /* AQOptionParser-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AQOptionParser-Prefix.pch"; sourceTree = "<group>"; };
 		385FFBAA156D461000F3D09E /* AQOptionParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AQOptionParser.h; sourceTree = "<group>"; };
 		385FFBAB156D461000F3D09E /* AQOptionParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AQOptionParser.m; sourceTree = "<group>"; };
-		385FFBB2156D461000F3D09E /* AQOptionParserTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AQOptionParserTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		385FFBB3156D461000F3D09E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		385FFBB2156D461000F3D09E /* AQOptionParserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AQOptionParserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		385FFBBB156D461000F3D09E /* AQOptionParserTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AQOptionParserTests-Info.plist"; sourceTree = "<group>"; };
 		385FFBBD156D461000F3D09E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		385FFBBF156D461000F3D09E /* AQOptionParserTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AQOptionParserTests.h; sourceTree = "<group>"; };
@@ -57,6 +56,7 @@
 		385FFBD1156D7AAA00F3D09E /* AQOptionRequirementGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQOptionRequirementGroup.h; sourceTree = "<group>"; };
 		385FFBD2156D7AAA00F3D09E /* AQOptionRequirementGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQOptionRequirementGroup.m; sourceTree = "<group>"; };
 		385FFBD61571583000F3D09E /* AQOptionRequirementGroup_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQOptionRequirementGroup_Internal.h; sourceTree = "<group>"; };
+		3DCA31091923E60000DB08E9 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +73,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3856976F1572B55A00F8636A /* AQOptionParser.framework in Frameworks */,
-				385FFBB4156D461000F3D09E /* SenTestingKit.framework in Frameworks */,
 				385FFBB5156D461000F3D09E /* Cocoa.framework in Frameworks */,
+				3DCA310A1923E60100DB08E9 /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				385FFB9A156D461000F3D09E /* AQOptionParser.framework */,
-				385FFBB2156D461000F3D09E /* AQOptionParserTests.octest */,
+				385FFBB2156D461000F3D09E /* AQOptionParserTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,8 +103,8 @@
 		385FFB9C156D461000F3D09E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3DCA31091923E60000DB08E9 /* XCTest.framework */,
 				385FFB9D156D461000F3D09E /* Cocoa.framework */,
-				385FFBB3156D461000F3D09E /* SenTestingKit.framework */,
 				385FFB9F156D461000F3D09E /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -208,7 +208,6 @@
 				385FFBAD156D461000F3D09E /* Sources */,
 				385FFBAE156D461000F3D09E /* Frameworks */,
 				385FFBAF156D461000F3D09E /* Resources */,
-				385FFBB0156D461000F3D09E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -217,8 +216,8 @@
 			);
 			name = AQOptionParserTests;
 			productName = AQOptionParserTests;
-			productReference = 385FFBB2156D461000F3D09E /* AQOptionParserTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 385FFBB2156D461000F3D09E /* AQOptionParserTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -226,7 +225,8 @@
 		385FFB90156D461000F3D09E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastTestingUpgradeCheck = 0510;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Jim Dovey";
 			};
 			buildConfigurationList = 385FFB93156D461000F3D09E /* Build configuration list for PBXProject "AQOptionParser" */;
@@ -265,22 +265,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		385FFBB0156D461000F3D09E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		385FFB95156D461000F3D09E /* Sources */ = {
@@ -335,11 +319,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -364,11 +346,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -385,6 +365,8 @@
 		385FFBC5156D461000F3D09E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -400,6 +382,8 @@
 		385FFBC6156D461000F3D09E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -415,24 +399,32 @@
 		385FFBC8156D461000F3D09E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AQOptionParser/AQOptionParser-Prefix.pch";
 				INFOPLIST_FILE = "AQOptionParserTests/AQOptionParserTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
 		385FFBC9156D461000F3D09E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AQOptionParser/AQOptionParser-Prefix.pch";
 				INFOPLIST_FILE = "AQOptionParserTests/AQOptionParserTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
