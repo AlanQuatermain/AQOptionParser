@@ -27,8 +27,8 @@ NSString * const AQOptionUsageLocalizedValueName   = @"AQOptionUsageLocalizedVal
  requiresParameter:(AQOptionParameterType)parameterType   optional:(BOOL) optional handler:(OptionHandler) handler	{
   if (!(self = super.init)) return nil;
   _longName       = longName.copy;
-  _shortName      = shortName == 0 ? [NSString.alloc initWithCharacters:[longName characterAtIndex:0] length:1]
-                                   : [NSString.alloc initWithCharacters:&shortName length:1];
+  _shortName      = shortName != 0 ? [NSString.alloc initWithCharacters:&shortName length:1]
+                                   : ({ unichar c = [_longName characterAtIndex:0]; [NSString.alloc initWithCharacters:&c length:1]; });
   _parameterType  = parameterType;
   _optional       = optional;
   _matchHandler   = [handler copy];
