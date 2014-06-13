@@ -2,6 +2,7 @@
 //  AQOptionParser.h AQOptionParser  Created by Jim Dovey on 2012-05-23. Copyright (c) 2012 Jim Dovey. All rights reserved.
 
 @import Foundation;
+@import Darwin.getopt;
 
 #import "AQOption.h"
 #import "AQOptionRequirementGroup.h"
@@ -18,6 +19,12 @@ extern NSString * const AQOptionErrorDomain;
  be matched or that at least one must match.
  */
 @interface AQOptionParser : NSObject
+
+@property (readonly) NSArray *allOptions;
+
+- (NSArray*) addLongOpts:(const struct option[])long_opts count:(int)ct;
+
+- (NSArray*) addLongOptsArray:(NSArray*)long_opts;
 
 /**
  Adds a single option to the receiver. If an option with the same long name is already
@@ -40,7 +47,7 @@ extern NSString * const AQOptionErrorDomain;
  The options within the group are added to the receiver in a manner similar to the 
  addOptions: method.
  */
-- (void) addOptionGroup: (AQOptionRequirementGroup*) group;
+- (AQOptionRequirementGroup*) addOptionGroup: (AQOptionRequirementGroup*) group;
 
 /**
  This method runs the actual option processing core.
@@ -63,6 +70,8 @@ extern NSString * const AQOptionErrorDomain;
  */
 - (BOOL) parseCommandLineArguments: (char * const []) argv count: (int) argc nextArgumentIndex: (int*) nextIndex error:(NSError **) error;
 
+#define PARSE_MAIN(parser_var) NSError *error; \
+                  [parser_var parseCommandLineArguments:argv count:argc nextArgumentIndex:NULL error:&error]
 /**
  Returns a string suitable for displaying as part of the usage information for the application.
  @param columnWidth The number of characters to display before wrapping.

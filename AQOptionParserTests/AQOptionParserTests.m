@@ -84,4 +84,9 @@
   STAssertEqualObjects(usage, expected, @"Expected '%@' but got '%@'", expected, usage);
 }
 
+- (void) testLongOptsConversion {
+
+  
+}
+
 @end

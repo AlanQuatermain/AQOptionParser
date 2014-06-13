@@ -15,6 +15,8 @@ NSString * const AQOptionErrorDomain = @"AQOptionErrorDomain";
   NSMutableSet        * _allOptions;
 }
 
+- (NSArray*) allOptions { return [_allOptions allObjects]; }
+
 - (id) init
 {
   if (!(self = super.init)) return nil;
@@ -24,7 +26,50 @@ NSString * const AQOptionErrorDomain = @"AQOptionErrorDomain";
 
   return self;
 }
+/*
+  NSArray *args = @[
+    @[@"help",        @(no_argument),        @NO, @"h"],  @[@"telnet",     @(no_argument),        @NO, @"t"],
+    @[@"no-clear",    @(no_argument),        @NO, @"e"],	@[@"frames",     @(required_argument),  @NO, @"f"],
+    @[@"min-rows",    @(required_argument),  @NO, @"r"],	@[@"max-rows",   @(required_argument),  @NO, @"R"]];
 
+*/
+
+- (NSArray*) addLongOpts:(const struct option[])long_opts count:(int)ct {
+
+  NSMutableArray *opts = @[].mutableCopy;
+  for (int i = 0; i < ct; i++) {
+      struct option opt = long_opts[i];
+      AQOption *o = [AQOption optionWithLName:[NSString stringWithUTF8String:opt.name]
+                                        sName:[NSString stringWithCharacters:opt. length:<#(NSUInteger)#>]
+                                    requires:[longOpt[1] integerValue] opt:YES
+                                     handler:longOpt.count == 4 ? longOpt[3] : NULL];
+
+   }
+
+}
+
+- (NSArray*) addLongOptsArray:(NSArray*)long_opts {
+
+  NSMutableArray *opts = @[].mutableCopy;
+
+  for (NSArray *longOpt in long_opts) {
+
+
+      NSString * lName      = longOpt[0];
+//      NSUInteger sNameIndex = [longOpt[2] isKindOfClass:NSNumber.class] ? 3 : 2;
+//      BOOL optional         = sNameIndex == 2 ? NO : [longOpt[3] boolValue];
+      NSString *sString     = longOpt[2];//sNameIndex];
+      unichar sName         = sString.length ? [sString characterAtIndex:0] : 0;
+
+      AQOption *o = [AQOption optionWithLName:lName sName:sName
+                                    requires:[longOpt[1] integerValue] opt:YES
+                                     handler:longOpt.count == 4 ? longOpt[3] : NULL];
+                                     
+      if (!o) { NSLog(@"problem adding %@", longOpt.firstObject); continue; }
+      [self addOption:o]; [opts addObject:o];
+  }
+  return opts;
+}
 - (AQOption*) addOption: (AQOption*) option
 {
   [_options addObject: option];
@@ -39,11 +84,12 @@ NSString * const AQOptionErrorDomain = @"AQOptionErrorDomain";
   return options;
 }
 
-- (void) addOptionGroup: (AQOptionRequirementGroup*) group
+- (AQOptionRequirementGroup*) addOptionGroup: (AQOptionRequirementGroup*) group
 {
   [_optionGroups addObject: group];
   [_allOptions unionSet: [group.options set]];
   [_options minusOrderedSet: group.options];
+  return group;
 }
 
 - (NSString*) localizedUsageInformationWithColumnWidth:(NSUInteger) columnWidth

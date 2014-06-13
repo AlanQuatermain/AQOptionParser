@@ -203,7 +203,7 @@
 				ORGANIZATIONNAME = "Jim Dovey";
 				TargetAttributes = {
 					385FFBB1156D461000F3D09E = {
-						TestTargetID = 385FFB99156D461000F3D09E;
+						TestTargetID = 7BC05C6A194B3DB900E60ACA;
 					};
 				};
 			};
@@ -365,7 +365,6 @@
 		385FFBC8156D461000F3D09E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AQOptionParser.framework/Versions/A/AQOptionParser";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
@@ -374,12 +373,10 @@
 				);
 				INFOPLIST_FILE = "AQOptionParserTests/AQOptionParserTests-Info.plist";
 				OTHER_LDFLAGS = (
-					"$(inherited)",
 					"-framework",
 					SenTestingKit,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -387,7 +384,6 @@
 		385FFBC9156D461000F3D09E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AQOptionParser.framework/Versions/A/AQOptionParser";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
@@ -396,12 +392,10 @@
 				);
 				INFOPLIST_FILE = "AQOptionParserTests/AQOptionParserTests-Info.plist";
 				OTHER_LDFLAGS = (
-					"$(inherited)",
 					"-framework",
 					SenTestingKit,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
@@ -425,6 +419,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				GENERATE_MASTER_OBJECT_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -446,6 +441,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				GENERATE_MASTER_OBJECT_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -488,6 +484,7 @@
 				7BC05C8E194B3DBA00E60ACA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
