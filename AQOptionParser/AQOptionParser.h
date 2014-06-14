@@ -22,7 +22,7 @@ extern NSString * const AQOptionErrorDomain;
 
 @property (readonly) NSArray *allOptions;
 
-- (NSArray*) addLongOpts:(const struct option[])long_opts count:(int)ct;
+- (void) addLongOpts:(const struct option[])long_opts count:(int)ct;
 
 - (NSArray*) addLongOptsArray:(NSArray*)long_opts;
 

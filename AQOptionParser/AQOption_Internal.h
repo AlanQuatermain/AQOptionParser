@@ -6,12 +6,6 @@
 
 #import "AQOptionRequirementGroup.h"
 
-@interface AQOption ()
-
-@property (readonly) NSString * longName;
-@property (readonly) unichar shortName;
-
-@end
 
 @interface AQOption (Internal)
 

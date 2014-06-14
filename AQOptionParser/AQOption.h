@@ -15,10 +15,22 @@ typedef NS_ENUM(NSUInteger, AQOptionParameterType)
     AQOptionParameterTypeRequired   /// This option requires a parameter, and will fail if none is provided.
 };
 
+//@interface AZOption : NSObject
+//typedef void (^OptHandler)(AZOption *option);
+//@property (copy) OptHandler handler;
+//@property (readonly) BOOL matched, optional;
+//@property (readonly) NSString *name, *value;
+//+ (instancetype) longOpt:(NSString*)l short:(unichar)s options:(AQOptionParameterType)t handler:(OptHandler)h;
+//@end
+
 /** @abstract The AQOption class specifies and represents a single command-line option. */
 @interface AQOption : NSObject
 
 typedef void (^OptionHandler)(AQOption *option);
+
+@property (readonly) NSString * longName;
+@property (readonly) unichar   shortName;
+
 
 /** Initializes a new AQOption with the given long and short form names corresponding to the command-line options `--[longName]` and `-[shortName]`.
 
@@ -49,14 +61,11 @@ typedef void (^OptionHandler)(AQOption *option);
 
 + (instancetype) optionWithLName:(NSString*)l sName:(unichar)s requires:(AQOptionParameterType)t opt:(BOOL)o;
 
-/// `YES` when the option has been successfully matched on the command-line, `NO` otherwise.
-@property (readonly, getter=hasBeenMatched, NS_NONATOMIC_IOSONLY) BOOL matched;
-
 /// When the option has been matched, this property will be set to the provided parameter, if any.
-@property (readonly, NS_NONATOMIC_IOSONLY) NSString * parameter;
+@property (readonly) NSString * value;
 
-/// Whether this option is required or optional.
-@property (readonly, getter=isOptional, NS_NONATOMIC_IOSONLY) BOOL optional;
+@property (readonly) BOOL matched,  /// `YES` when the option has been successfully matched on the command-line, `NO` otherwise.
+                          optional; /// Whether this option is required or optional.
 
 /**
  Localized help strings to be output as usage information for this option. If not specified,

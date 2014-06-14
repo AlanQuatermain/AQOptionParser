@@ -34,18 +34,17 @@ NSString * const AQOptionErrorDomain = @"AQOptionErrorDomain";
 
 */
 
-- (NSArray*) addLongOpts:(const struct option[])long_opts count:(int)ct {
+- (void) addLongOpts:(const struct option[])long_opts count:(int)ct {
 
-  NSMutableArray *opts = @[].mutableCopy;
   for (int i = 0; i < ct; i++) {
       struct option opt = long_opts[i];
       AQOption *o = [AQOption optionWithLName:[NSString stringWithUTF8String:opt.name]
-                                        sName:[NSString stringWithCharacters:opt. length:<#(NSUInteger)#>]
-                                    requires:[longOpt[1] integerValue] opt:YES
-                                     handler:longOpt.count == 4 ? longOpt[3] : NULL];
-
+                                        sName:(unichar)opt.flag
+                                        //[[NSString stringWithFormat:@"%c",(unichar)opt.flag] characterAtIndex:0]
+                                    requires:opt.has_arg opt:YES];
+      if(o) { [self addOption:o]; }
+      else printf("Problem adding opt %s\n", opt.name);
    }
-
 }
 
 - (NSArray*) addLongOptsArray:(NSArray*)long_opts {

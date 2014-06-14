@@ -3,18 +3,35 @@
 
 #import "AQOption_Internal.h"
 
+
+//@implementation AZOption
+//
+//+ (instancetype) longOpt:(NSString*)l short:(unichar)s options:(AQOptionParameterType)t handler:(OptHandler)h {
+//
+////@property (copy) OptHandler handler;
+////@property (readonly) BOOL matched, optional;
+////@property (readonly) NSString *name, *value;
+//
+//  AZOption *new = self.new;
+//  [new setValuesForKeysWithDictionary:@{@"name", l, ]
+//}
+//@end
+
+
 NSString * const AQOptionUsageLocalizedValueName   = @"AQOptionUsageLocalizedValueName",
          * const AQOptionUsageLocalizedDescription = @"AQOptionUsageLocalizedDescription";
 
 @implementation AQOption	{
-    NSString                 *  _localizedOptionExample,
-                             *  _shortName;
+    NSString                 *  _localizedOptionExample;
     AQOptionRequirementGroup *  _requirementGroup __weak;
     AQOptionParameterType       _parameterType;
     OptionHandler               _matchHandler;
 }
 
-@synthesize matched=_matched, optional=_optional, parameter=_parameter, localizedUsageInformation=_usageInformation, longName=_longName;
+@synthesize //matched=_matched, optional=_optional,
+  value = _parameter,
+  localizedUsageInformation=_usageInformation;
+  //', longName=_longName;
 
 + (instancetype) optionWithLName:(NSString*)l sName:(unichar)s requires:(AQOptionParameterType)t opt:(BOOL)o {
   return [self.alloc initWithLongName:l shortName:s requiresParameter:t optional:o];
@@ -27,8 +44,8 @@ NSString * const AQOptionUsageLocalizedValueName   = @"AQOptionUsageLocalizedVal
  requiresParameter:(AQOptionParameterType)parameterType   optional:(BOOL) optional handler:(OptionHandler) handler	{
   if (!(self = super.init)) return nil;
   _longName       = longName.copy;
-  _shortName      = shortName != 0 ? [NSString.alloc initWithCharacters:&shortName length:1]
-                                   : ({ unichar c = [_longName characterAtIndex:0]; [NSString.alloc initWithCharacters:&c length:1]; });
+  _shortName      = shortName;// != 0 ? (unichar)[NSString.alloc initWithCharacters:&shortName length:1]
+                                //   : ({ unichar c = [_longName characterAtIndex:0]; [NSString.alloc initWithCharacters:&c length:1]; });
   _parameterType  = parameterType;
   _optional       = optional;
   _matchHandler   = [handler copy];
@@ -41,19 +58,19 @@ NSString * const AQOptionUsageLocalizedValueName   = @"AQOptionUsageLocalizedVal
     return ( [self initWithLongName:longName shortName:shortName requiresParameter:parameterType optional:optional handler:nil] );
 }
 
-- (unichar) shortName	{
-    return ( [_shortName characterAtIndex: 0] );
-}
+//- (unichar) shortName	{
+//    return ( [_shortName characterAtIndex: 0] );
+//}
 
 - (void) _generateOptionExample	{
     NSString * val = [_usageInformation objectForKey: AQOptionUsageLocalizedValueName] ?: NSLocalizedString(@"value", @"default value name");
     
     _localizedOptionExample = _parameterType == AQOptionParameterTypeNone
-                            ? [[NSString alloc] initWithFormat: @"--%@ | -%@:", _longName, _shortName]
+                            ? [[NSString alloc] initWithFormat: @"--%@ | -%C:", _longName, self.shortName]
                             : _parameterType == AQOptionParameterTypeRequired
-                            ? [NSString.alloc initWithFormat: @"--%@=%@ | %@ %@:", _longName, val, _shortName, val]
+                            ? [NSString.alloc initWithFormat: @"--%@=%@ | %C %@:", _longName, val, self.shortName, val]
                             : /* AQOptionParameterTypeOptional or default */
-                              [NSString.alloc initWithFormat: @"--%@[=%@] | -%@ [%@]:", _longName, val, _shortName, val];
+                              [NSString.alloc initWithFormat: @"--%@[=%@] | -%C [%@]:", _longName, val, self.shortName, val];
 }
 
 - (void) setLocalizedUsageInformation:(NSDictionary*) localizedUsageInformation	{
@@ -265,7 +282,7 @@ NSString * const AQOptionUsageLocalizedValueName   = @"AQOptionUsageLocalizedVal
 }
 
 - (NSString*) description {
-    return ( [NSString stringWithFormat: @"%@: --%@ | -%@", [super description], _longName, _shortName] );
+    return ( [NSString stringWithFormat: @"%@: --%@ | -%C", [super description], _longName, self.shortName] );
 }
 
 - (NSUInteger) hash {
@@ -304,7 +321,7 @@ NSString * const AQOptionUsageLocalizedValueName   = @"AQOptionUsageLocalizedVal
 - (void) setGetoptParameters:(struct option*)option {
     option->name = [_longName UTF8String];
     option->flag = NULL;
-    option->val = (int)[_shortName characterAtIndex: 0];
+    option->val = (int)self.shortName;// characterAtIndex: 0];
     
     option->has_arg = _parameterType == AQOptionParameterTypeNone     ? no_argument
                     : _parameterType == AQOptionParameterTypeRequired ? required_argument
