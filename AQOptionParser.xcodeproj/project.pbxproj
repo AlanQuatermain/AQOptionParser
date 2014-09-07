@@ -40,8 +40,7 @@
 		385FFBAA156D461000F3D09E /* AQOptionParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AQOptionParser.h; path = AQOptionParser/AQOptionParser.h; sourceTree = "<group>"; wrapsLines = 1; };
 		385FFBAB156D461000F3D09E /* AQOptionParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AQOptionParser.m; path = AQOptionParser/AQOptionParser.m; sourceTree = "<group>"; wrapsLines = 1; };
 		385FFBB2156D461000F3D09E /* AQOptionParserTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AQOptionParserTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		385FFBBB156D461000F3D09E /* AQOptionParserTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AQOptionParserTests-Info.plist"; sourceTree = "<group>"; };
-		385FFBC0156D461000F3D09E /* AQOptionParserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AQOptionParserTests.m; sourceTree = "<group>"; };
+		385FFBC0156D461000F3D09E /* AQOptionParserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AQOptionParserTests.m; path = AQOptionParserTests/AQOptionParserTests.m; sourceTree = SOURCE_ROOT; };
 		385FFBCA156D46A000F3D09E /* AQOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AQOption.h; path = AQOptionParser/AQOption.h; sourceTree = "<group>"; wrapsLines = 1; };
 		385FFBCB156D46A000F3D09E /* AQOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AQOption.m; path = AQOptionParser/AQOption.m; sourceTree = "<group>"; wrapsLines = 1; };
 		385FFBCF156D4D1800F3D09E /* AQOption_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AQOption_Internal.h; path = AQOptionParser/AQOption_Internal.h; sourceTree = "<group>"; wrapsLines = 1; };
@@ -79,37 +78,36 @@
 		385FFB8E156D461000F3D09E = {
 			isa = PBXGroup;
 			children = (
-				385FFBAA156D461000F3D09E /* AQOptionParser.h */,
-				385FFBAB156D461000F3D09E /* AQOptionParser.m */,
+				385FFBCF156D4D1800F3D09E /* AQOption_Internal.h */,
 				385FFBCA156D46A000F3D09E /* AQOption.h */,
 				385FFBCB156D46A000F3D09E /* AQOption.m */,
-				385FFBCF156D4D1800F3D09E /* AQOption_Internal.h */,
+				385FFBAA156D461000F3D09E /* AQOptionParser.h */,
+				385FFBAB156D461000F3D09E /* AQOptionParser.m */,
 				385FFBD1156D7AAA00F3D09E /* AQOptionRequirementGroup.h */,
 				385FFBD2156D7AAA00F3D09E /* AQOptionRequirementGroup.m */,
-				385FFBA4156D461000F3D09E /* Supporting Files */,
-				385FFBB9156D461000F3D09E /* AQOptionParserTests */,
+				385FFBA4156D461000F3D09E /* Etc */,
 			);
 			sourceTree = "<group>";
 		};
-		385FFBA4156D461000F3D09E /* Supporting Files */ = {
+		385FFBA4156D461000F3D09E /* Etc */ = {
+			isa = PBXGroup;
+			children = (
+				385FFBC0156D461000F3D09E /* AQOptionParserTests.m */,
+				7B22B2BA19BC057300E1C71C /* Targets */,
+			);
+			name = Etc;
+			path = AQOptionParser;
+			sourceTree = "<group>";
+		};
+		7B22B2BA19BC057300E1C71C /* Targets */ = {
 			isa = PBXGroup;
 			children = (
 				7BC05C6B194B3DB900E60ACA /* libAQOptions.a */,
 				385FFB9A156D461000F3D09E /* AQOptionParser.framework */,
+				385FFBB2156D461000F3D09E /* AQOptionParserTests.octest */,
 				385FFBA5156D461000F3D09E /* AQOptionParser-Info.plist */,
 			);
-			name = "Supporting Files";
-			path = AQOptionParser;
-			sourceTree = "<group>";
-		};
-		385FFBB9156D461000F3D09E /* AQOptionParserTests */ = {
-			isa = PBXGroup;
-			children = (
-				385FFBB2156D461000F3D09E /* AQOptionParserTests.octest */,
-				385FFBC0156D461000F3D09E /* AQOptionParserTests.m */,
-				385FFBBB156D461000F3D09E /* AQOptionParserTests-Info.plist */,
-			);
-			path = AQOptionParserTests;
+			name = Targets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
