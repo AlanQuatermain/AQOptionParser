@@ -1,104 +1,92 @@
-//
-//  AQOption.m
-//  AQOptionParser
-//
-//  Created by Jim Dovey on 2012-05-23.
-//  Copyright (c) 2012 Jim Dovey. All rights reserved.
-//
 
-#import "AQOption.h"
+//  AQOption.m AQOptionParser Created by Jim Dovey on 2012-05-23. Copyright (c) 2012 Jim Dovey. All rights reserved.
+
 #import "AQOption_Internal.h"
-#import "AQOptionRequirementGroup_Internal.h"
 
-NSString * const AQOptionUsageLocalizedValueName = @"AQOptionUsageLocalizedValueName";
-NSString * const AQOptionUsageLocalizedDescription = @"AQOptionUsageLocalizedDescription";
 
-@implementation AQOption
-{
-    NSString *                  _longName;
-    NSString *                  _shortName;
-    AQOptionParameterType       _parameterType;
-    NSDictionary *              _usageInformation;
-    NSString *                  _parameter;
-    NSString *                  _localizedOptionExample;
+//@implementation AZOption
+//
+//+ (instancetype) longOpt:(NSString*)l short:(unichar)s options:(AQOptionParameterType)t handler:(OptHandler)h {
+//
+////@property (copy) OptHandler handler;
+////@property (readonly) BOOL matched, optional;
+////@property (readonly) NSString *name, *value;
+//
+//  AZOption *new = self.new;
+//  [new setValuesForKeysWithDictionary:@{@"name", l, ]
+//}
+//@end
+
+
+NSString * const AQOptionUsageLocalizedValueName   = @"AQOptionUsageLocalizedValueName",
+         * const AQOptionUsageLocalizedDescription = @"AQOptionUsageLocalizedDescription";
+
+@implementation AQOption	{
+    NSString                 *  _localizedOptionExample;
     AQOptionRequirementGroup *  _requirementGroup __weak;
-    
-    void (^_matchHandler)(NSString *, NSString *);
-    
-    BOOL                        _matched;
-    BOOL                        _optional;
+    AQOptionParameterType       _parameterType;
+    OptionHandler               _matchHandler;
 }
 
-@synthesize matched=_matched, optional=_optional, parameter=_parameter, localizedUsageInformation=_usageInformation, longName=_longName;
+@synthesize //matched=_matched, optional=_optional,
+  value = _parameter,
+  localizedUsageInformation=_usageInformation;
+  //', longName=_longName;
 
-- (id) initWithLongName: (NSString *) longName shortName: (unichar) shortName requiresParameter: (AQOptionParameterType) parameterType optional: (BOOL) optional handler: (void (^)(NSString *, NSString *)) handler
-{
-    self = [super init];
-    if ( self == nil )
-        return ( nil );
-    
-    _longName = [longName copy];
-    _shortName = [[NSString alloc] initWithCharacters: &shortName length: 1];
-    _parameterType = parameterType;
-    _optional = optional;
-    _matchHandler = [handler copy];
-    
-    [self _generateOptionExample];
-    
-    return ( self );
++ (instancetype) optionWithLName:(NSString*)l sName:(unichar)s requires:(AQOptionParameterType)t opt:(BOOL)o {
+  return [self.alloc initWithLongName:l shortName:s requiresParameter:t optional:o];
+}
++ (instancetype) optionWithLName:(NSString*)l sName:(unichar)s requires:(AQOptionParameterType)t opt:(BOOL)o handler:(OptionHandler)h{
+  return [self.alloc initWithLongName:l shortName:s requiresParameter:t optional:o handler:h];
 }
 
-- (id) initWithLongName: (NSString *) longName shortName: (unichar) shortName requiresParameter: (AQOptionParameterType) parameterType optional: (BOOL) optional
-{
+- initWithLongName:(NSString*)longName                   shortName:(unichar) shortName
+ requiresParameter:(AQOptionParameterType)parameterType   optional:(BOOL) optional handler:(OptionHandler) handler	{
+  if (!(self = super.init)) return nil;
+  _longName       = longName.copy;
+  _shortName      = shortName;// != 0 ? (unichar)[NSString.alloc initWithCharacters:&shortName length:1]
+                                //   : ({ unichar c = [_longName characterAtIndex:0]; [NSString.alloc initWithCharacters:&c length:1]; });
+  _parameterType  = parameterType;
+  _optional       = optional;
+  _matchHandler   = [handler copy];
+  [self _generateOptionExample];
+  return self;
+}
+
+- initWithLongName:(NSString*)longName                  shortName:(unichar)shortName
+ requiresParameter:(AQOptionParameterType) parameterType optional:(BOOL)optional	{
     return ( [self initWithLongName:longName shortName:shortName requiresParameter:parameterType optional:optional handler:nil] );
 }
 
-- (unichar) shortName
-{
-    return ( [_shortName characterAtIndex: 0] );
-}
+//- (unichar) shortName	{
+//    return ( [_shortName characterAtIndex: 0] );
+//}
 
-- (void) _generateOptionExample
-{
-    NSString * val = [_usageInformation objectForKey: AQOptionUsageLocalizedValueName];
-    if ( val == nil )
-        val = NSLocalizedString(@"value", @"default value name");
+- (void) _generateOptionExample	{
+    NSString * val = [_usageInformation objectForKey: AQOptionUsageLocalizedValueName] ?: NSLocalizedString(@"value", @"default value name");
     
-    switch ( _parameterType )
-    {
-        case AQOptionParameterTypeNone:
-            _localizedOptionExample = [[NSString alloc] initWithFormat: @"--%@ | -%@:", _longName, _shortName];
-            break;
-            
-        case AQOptionParameterTypeOptional:
-        default:
-            _localizedOptionExample = [[NSString alloc] initWithFormat: @"--%@[=%@] | -%@ [%@]:", _longName, val, _shortName, val];
-            break;
-            
-        case AQOptionParameterTypeRequired:
-            _localizedOptionExample = [[NSString alloc] initWithFormat: @"--%@=%@ | %@ %@:", _longName, val, _shortName, val];
-            break;
-    }
+    _localizedOptionExample = _parameterType == AQOptionParameterTypeNone
+                            ? [[NSString alloc] initWithFormat: @"--%@ | -%C:", _longName, self.shortName]
+                            : _parameterType == AQOptionParameterTypeRequired
+                            ? [NSString.alloc initWithFormat: @"--%@=%@ | %C %@:", _longName, val, self.shortName, val]
+                            : /* AQOptionParameterTypeOptional or default */
+                              [NSString.alloc initWithFormat: @"--%@[=%@] | -%C [%@]:", _longName, val, self.shortName, val];
 }
 
-- (void) setLocalizedUsageInformation: (NSDictionary *) localizedUsageInformation
-{
+- (void) setLocalizedUsageInformation:(NSDictionary*) localizedUsageInformation	{
     [self willChangeValueForKey: @"localizedUsageInformation"];
     _usageInformation = [localizedUsageInformation copy];
     [self _generateOptionExample];
     [self didChangeValueForKey: @"localizedUsageInformation"];
 }
 
-- (void) _hyphenatingWrapString: (NSMutableString *) str withIndent: (NSUInteger) indent atColumn: (NSUInteger) column forLocale: (NSLocale *) locale
-{
-    NSMutableString * indentStr = [NSMutableString new];
-    for ( NSUInteger i = 0; i < indent; i++ )
-        [indentStr appendString: @" "];
+- (void) _hyphenatingWrapString:(NSMutableString*)str withIndent:(NSUInteger) indent atColumn:(NSUInteger) column forLocale:(NSLocale*)locale	{
+    NSMutableString * indentStr = NSMutableString.new;
+    for ( NSUInteger i = 0; i < indent; i++ ) [indentStr appendString: @" "];
     
     // indent first line
     [str insertString: indentStr atIndex: 0];
-    if ( column == 0 )      // no wrapping required
-        return;
+    if ( column == 0 )  return;    // no wrapping required
     
     // replace all tabs with the indent string
     [str replaceOccurrencesOfString: @"\t" withString: indentStr options: 0 range: NSMakeRange(0, [str length])];
@@ -115,25 +103,18 @@ NSString * const AQOptionUsageLocalizedDescription = @"AQOptionUsageLocalizedDes
         NSUInteger newlineIdx = [base rangeOfString: @"\n" options: 0 range: enclosingRange].location;
         if ( newlineIdx != NSNotFound && newlineIdx <= breakPoint )
         {
-            // switch to a new line, resetting the break point as appropriate.
-            breakPoint = newlineIdx+1 + (column-indent);
-            [str appendString: [base substringWithRange: enclosingRange]];
-            return;
+            breakPoint = newlineIdx+1 + (column-indent); // switch to a new line, resetting the break point as appropriate.
+            [str appendString: [base substringWithRange: enclosingRange]]; return;
         }
-        
-        // if we haven't met the break point, just append the enclosing range
-        if ( NSLocationInRange(breakPoint, enclosingRange) == NO )
-        {
-            [str appendString: [base substringWithRange: enclosingRange]];
-            return;
-        }
-        
+
+        if ( NSLocationInRange(breakPoint, enclosingRange) == NO ) // if we haven't met the break point, just append the enclosing range
+            return [str appendString: [base substringWithRange: enclosingRange]];
+
         if ( breakPoint == enclosingRange.location )
         {
-            // insert a newline before this word
-            [str appendFormat: @"\n%@", indentStr];
+            [str appendFormat: @"\n%@", indentStr]; // insert a newline before this word
             [str appendString: [base substringWithRange: enclosingRange]];
-            breakPoint += (column-indent);       // update breakPoint for the new line
+            breakPoint += (column-indent);  // update breakPoint for the new line
             return;
         }
         
@@ -154,12 +135,10 @@ NSString * const AQOptionUsageLocalizedDescription = @"AQOptionUsageLocalizedDes
                 
                 if ( NSMaxRange(ws) < NSMaxRange(enclosingRange) )
                 {
-                    // some character followed the whitespace
-                    r.location = NSMaxRange(ws);
+                    r.location = NSMaxRange(ws);                     // some character followed the whitespace
                     r.length = NSMaxRange(enclosingRange) - r.location;
                     [str appendString: [base substringWithRange: r]];
                 }
-                
                 return;
             }
         }
@@ -192,8 +171,7 @@ NSString * const AQOptionUsageLocalizedDescription = @"AQOptionUsageLocalizedDes
     }];
 }
 
-- (void) _plainWrapString: (NSMutableString *) str withIndent: (NSUInteger) indent atColumn: (NSUInteger) column
-{
+- (void)       _plainWrapString:(NSMutableString*)str withIndent:(NSUInteger) indent atColumn:(NSUInteger) column	{
     NSMutableString * indentStr = [NSMutableString new];
     for ( NSUInteger i = 0; i < indent; i++ )
         [indentStr appendString: @" "];
@@ -281,8 +259,7 @@ NSString * const AQOptionUsageLocalizedDescription = @"AQOptionUsageLocalizedDes
     }];
 }
 
-- (NSString *) localizedUsageForOutputLineWidth: (NSUInteger) lineWidth
-{
+- (NSString*) localizedUsageForOutputLineWidth:(NSUInteger) lineWidth {
     // generate the description string
     NSString * descBase = [_usageInformation objectForKey: AQOptionUsageLocalizedDescription];
     if ( descBase == nil )
@@ -304,18 +281,15 @@ NSString * const AQOptionUsageLocalizedDescription = @"AQOptionUsageLocalizedDes
     return ( [NSString stringWithFormat: @"%@\n%@", _localizedOptionExample, description] );
 }
 
-- (NSString *) description
-{
-    return ( [NSString stringWithFormat: @"%@: --%@ | -%@", [super description], _longName, _shortName] );
+- (NSString*) description {
+    return ( [NSString stringWithFormat: @"%@: --%@ | -%C", [super description], _longName, self.shortName] );
 }
 
-- (NSUInteger) hash
-{
+- (NSUInteger) hash {
     return ( [_longName hash] );
 }
 
-- (BOOL) isEqual: (id) object
-{
+- (BOOL) isEqual:(id)object {
     if ( object == nil )
         return ( NO );
     if ( [object isKindOfClass: [self class]] == NO )
@@ -324,17 +298,13 @@ NSString * const AQOptionUsageLocalizedDescription = @"AQOptionUsageLocalizedDes
     return ( [_longName isEqualToString: ((AQOption *)object)->_longName] );
 }
 
-@end
+#pragma mark -  Internal
 
-@implementation AQOption (Internal)
-
-- (void) addedToRequirementGroup: (AQOptionRequirementGroup *) requirementGroup
-{
+- (void) addedToRequirementGroup:(AQOptionRequirementGroup*)requirementGroup {
     _requirementGroup = requirementGroup;
 }
 
-- (void) matchedWithParameter: (NSString *) parameter
-{
+- (void) matchedWithParameter:(NSString*)parameter  {
     [self willChangeValueForKey: @"matched"];
     _matched = YES;
     [self didChangeValueForKey: @"matched"];
@@ -345,50 +315,28 @@ NSString * const AQOptionUsageLocalizedDescription = @"AQOptionUsageLocalizedDes
     
     [_requirementGroup optionWasMatched: self];
     
-    if ( _matchHandler != nil )
-        _matchHandler(_longName, _parameter);
+    !_matchHandler ?: _matchHandler(self);
 }
 
-- (void) setGetoptParameters: (struct option *) option
-{
+- (void) setGetoptParameters:(struct option*)option {
     option->name = [_longName UTF8String];
     option->flag = NULL;
-    option->val = (int)[_shortName characterAtIndex: 0];
+    option->val = (int)self.shortName;// characterAtIndex: 0];
     
-    switch ( _parameterType )
-    {
-        case AQOptionParameterTypeNone:
-            option->has_arg = no_argument;
-            break;
-        default:
-        case AQOptionParameterTypeOptional:
-            option->has_arg = optional_argument;
-            break;
-        case AQOptionParameterTypeRequired:
-            option->has_arg = required_argument;
-            break;
-    }
+    option->has_arg = _parameterType == AQOptionParameterTypeNone     ? no_argument
+                    : _parameterType == AQOptionParameterTypeRequired ? required_argument
+                    : /* default / AQOptionParameterTypeOptional */     optional_argument;
 }
 
 @end
 
-enum
-{
-    LongNameIndex,
-    ShortNameIndex,
-    TypeIndex,
-    OptionalIndex,
-    HandlerIndex,
-    DescIndex,
-    ValueIndex
-};
+enum { LongNameIndex, ShortNameIndex, TypeIndex, OptionalIndex, HandlerIndex, DescIndex, ValueIndex };
 
 #define OBJECT_OR_NIL(obj) (obj == [NSNull null] ? nil : obj)
 
 @implementation AQOption (AQOptionListCreationHelper)
 
-+ (NSArray *) optionsWithArrayDefinitions: (NSArray *) arrayDefinitions
-{
++ (NSArray*) optionsWithArrayDefinitions:(NSArray*)arrayDefinitions {
     if ( [arrayDefinitions count] == 0 )
         return ( nil );
     
@@ -403,7 +351,7 @@ enum
         __block NSString * longName, * shortName, * desc, * value;
         __block AQOptionParameterType type;
         __block BOOL optional;
-        __block void (^handler)(NSString *, NSString *);
+        __block OptionHandler handler; // void (^handler)(NSString *, NSString *);
         [definition enumerateObjectsUsingBlock: ^(id obj, NSUInteger idx, BOOL *stop) {
             switch ( idx )
             {
@@ -436,21 +384,18 @@ enum
         if ( longName == nil || shortName == nil )
             [NSException raise: NSInvalidArgumentException format: @"Array %@ does not match prescribed format", definition];
         
-        AQOption * option = [[AQOption alloc] initWithLongName: longName shortName: [shortName characterAtIndex: 0] requiresParameter: type optional: optional handler: handler];
-        if ( desc != nil || value != nil )
+        AQOption * option = [AQOption optionWithLName:longName sName:[shortName characterAtIndex: 0] requires:type opt:optional handler:handler];
+        if (!desc || !value)
         {
-            NSMutableDictionary * dict = [NSMutableDictionary new];
-            if ( desc != nil )
-                [dict setObject: desc forKey: AQOptionUsageLocalizedDescription];
-            if ( value != nil )
-                [dict setObject: desc forKey: AQOptionUsageLocalizedValueName];
+            NSMutableDictionary * dict = @{}.mutableCopy;
+            if (desc)   [dict setObject: desc forKey: AQOptionUsageLocalizedDescription];
+            if (value)  [dict setObject: desc forKey: AQOptionUsageLocalizedValueName];
             option.localizedUsageInformation = dict;
         }
-        
         [result addObject: option];
     }
     
-    return ( [result copy] );
+    return [result copy];
 }
 
 @end

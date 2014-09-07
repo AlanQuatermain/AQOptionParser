@@ -1,12 +1,8 @@
-//
-//  AQOptionParser.h
-//  AQOptionParser
-//
-//  Created by Jim Dovey on 2012-05-23.
-//  Copyright (c) 2012 Jim Dovey. All rights reserved.
-//
 
-#import <Foundation/Foundation.h>
+//  AQOptionParser.h AQOptionParser  Created by Jim Dovey on 2012-05-23. Copyright (c) 2012 Jim Dovey. All rights reserved.
+
+@import Foundation;
+@import Darwin.getopt;
 
 #import "AQOption.h"
 #import "AQOptionRequirementGroup.h"
@@ -24,19 +20,25 @@ extern NSString * const AQOptionErrorDomain;
  */
 @interface AQOptionParser : NSObject
 
+@property (readonly) NSArray *allOptions;
+
+- (void) addLongOpts:(const struct option[])long_opts count:(int)ct;
+
+- (NSArray*) addLongOptsArray:(NSArray*)long_opts;
+
 /**
  Adds a single option to the receiver. If an option with the same long name is already
  present then it is replaced by the new value.
  @param option The new option.
  */
-- (void) addOption: (AQOption *) option;
+- (AQOption*) addOption: (AQOption*) option;
 
 /**
  Adds a set of options to the receiver. If any options in the supplied list use the same
  long name as an existing option, that existing option is replaced.
  @param options The new options.
  */
-- (void) addOptions: (NSArray *) options;
+- (NSArray*) addOptions:(NSArray*) options;
 
 /**
  Adds a group of options to the receiver. The group specifies that either any of the
@@ -45,7 +47,7 @@ extern NSString * const AQOptionErrorDomain;
  The options within the group are added to the receiver in a manner similar to the 
  addOptions: method.
  */
-- (void) addOptionGroup: (AQOptionRequirementGroup *) group;
+- (AQOptionRequirementGroup*) addOptionGroup: (AQOptionRequirementGroup*) group;
 
 /**
  This method runs the actual option processing core.
@@ -66,19 +68,21 @@ extern NSString * const AQOptionErrorDomain;
  @result Returns `YES` if the options were parsed successfully and all requirements met, `NO`
  otherwise.
  */
-- (BOOL) parseCommandLineArguments: (char * const []) argv count: (int) argc nextArgumentIndex: (int *) nextIndex error: (NSError **) error;
+- (BOOL) parseCommandLineArguments: (char * const []) argv count: (int) argc nextArgumentIndex: (int*) nextIndex error:(NSError **) error;
 
+#define PARSE_MAIN(parser_var) NSError *error; \
+                  [parser_var parseCommandLineArguments:argv count:argc nextArgumentIndex:NULL error:&error]
 /**
  Returns a string suitable for displaying as part of the usage information for the application.
  @param columnWidth The number of characters to display before wrapping.
  @result A string suitable for output to the user.
  */
-- (NSString *) localizedUsageInformationWithColumnWidth: (NSUInteger) columnWidth;
+- (NSString*) localizedUsageInformationWithColumnWidth:(NSUInteger) columnWidth;
 
 /**
  Writes the usage information to the given file, determining an appropriate column width for terminals.
  @param fileHandle The file handle to which to write the usage information.
  */
-- (void) writeLocalizedUsageInformationToFile: (NSFileHandle *) fileHandle;
+- (void) writeLocalizedUsageInformationToFile:(NSFileHandle*) fileHandle;
 
 @end
